@@ -6,7 +6,7 @@ class TipoUsuario(models.Model):
     tipoUsu = models.CharField(max_length=50,verbose_name='tipo')
 
     def __str__(self):
-        return self.TipoUsu
+        return self.tipoUsu
 
 class Usuario(models.Model):
     idusuario = models.IntegerField(primary_key=True,verbose_name='Id')
