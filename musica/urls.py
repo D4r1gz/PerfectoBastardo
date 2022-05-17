@@ -6,4 +6,5 @@ urlpatterns = [
     path('formulario_registro', formulario_registro, name="formulario_registro"),
     path('galeria', galeria, name="galeria"),
     path('inicio_sesion', inicio_sesion, name="inicio_sesion"),
+    path('form-usuario', formulario_registro, name='formulario_registro'),
 ]

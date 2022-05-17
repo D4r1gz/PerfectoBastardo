@@ -115,11 +115,29 @@
             </section>
 
             <section class="box-shadow">
-                <h2>Fechas</h2>
+                <h2>usuarios</h2>
+                <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">nombre</th>
+                        <th scope="col">fecha de nacimiento</th>
+                      </tr>
+                    </thead>
+                    <tbody>                
+                        {% for usu in usuario%}
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>{{usu.nombreUsuario}}</td>
+                        <td>{{usu.Fecha_nac}}</td>
+                        <td>@mdo</td>
+                      </tr>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero optio quisquam fugit natus eius
-                    cumque maxime modi quidem quibusdam
-                    labore porro, a laudantium blanditiis perspiciatis voluptate ratione veniam, vitae dolorem?</p>
+                      {% endfor %}
+                    </tbody>
+                    
+                  </table>
+                
             </section>
 
             <section>
