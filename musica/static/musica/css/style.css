@@ -83,11 +83,6 @@ body {
 
 }
 
-/*.disco {
-    margin: auto;
-    background-color: var(--ccolor);
-    background-image: linear-gradient(to top, var(--primarycolor) 0%, var(--dcolor) 100%); 
-}*/
 
 main {
     padding: 40px;
@@ -249,24 +244,29 @@ h1,h2,h3 {
     box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
     margin: auto;
     border-radius: 3rem;
-    width: 800px;
+    width: 900px;
     height: 500px; 
     text-align: center;
+    padding: 5rem;
     
 }
 
-.jiji {
+.paracontacto {
     -webkit-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
     -moz-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
     box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
     margin: auto;
     border-radius: 3rem;
     width: auto ;
-    height: auto; 
-    
+    height: auto;
+
 }
 
-
+.disco {
+    padding: 2rem;
+    
+   
+}
 
 .boton:hover {
     cursor: pointer;
@@ -280,10 +280,11 @@ h1,h2,h3 {
 
 .formulario {
 
-    width: min(60rem, 100%);
+    width: min(30rem, 100%);
     margin: 0 auto;
-    padding: 2rem;   
-
+    padding: 2rem;
+    font-size: 70%;   
+    
 }
 
 .formulario fieldset {
@@ -293,7 +294,7 @@ h1,h2,h3 {
 
 .formulario legend {
     text-align: center;
-    font-size: 2.8rem;
+    font-size: 2rem;
     text-transform: uppercase;  
     font-weight: 700;
     margin-bottom: 2rem;
@@ -316,10 +317,6 @@ h1,h2,h3 {
 }
 
 
-.contenedor-disco {
-
-    padding: 9rem;
-}
 
 .input-text {
     width: 100%;
@@ -349,12 +346,21 @@ h1,h2,h3 {
 
 }
 
-
-
-
-.social-media{
-    align-items: flex-end;
-}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
 
 
 #menu_disco {
