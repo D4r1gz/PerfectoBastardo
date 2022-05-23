@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import datetime, date,DateField
 # Create your models here.
 
 class TipoUsuario(models.Model):
