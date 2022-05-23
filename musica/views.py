@@ -1,3 +1,4 @@
+from ast import And
 from django.shortcuts import render
 from musica.models import Evento
 from .forms import EventoForm
