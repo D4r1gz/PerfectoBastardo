@@ -17,6 +17,7 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.nombreUsuario
+        
 class TipoEvento(models.Model):
     idEvento = models.IntegerField(primary_key=True,verbose_name='Id de Evento')
     nombreTipoEvento = models.CharField(max_length=60,verbose_name='Nombre Tipo de Evento')

@@ -1,10 +1,8 @@
-from dataclasses import fields
-from pyexpat import model
 from django import forms
-from django.forms import ModelForm
-from .models import Usuario
+from django. forms import ModelForm
+from .models import Evento
 
-class UsuarioForm(ModelForm):
+class EventoForm(ModelForm):
     class Meta:
-        model= Usuario
-        fields=['nombreUsuario', 'Contrasenna','Fecha_nac']
+        model = Evento
+        fields = ['nombreEvento', 'descripcion', 'fecha', 'precio', 'categoria'] 
