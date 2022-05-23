@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import home, biografia, merchandising, discografia, galeria, formulario_registro, inicio_sesion, conciertos 
-
+from .views import home, biografia, merchandising, discografia, galeria, formulario_registro, inicio_sesion, conciertos
+ 
 urlpatterns = [
     path('', home,name="home"),
     path('discografia', discografia, name="discografia"),
