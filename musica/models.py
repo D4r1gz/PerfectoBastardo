@@ -1,5 +1,6 @@
+
 from django.db import models
-from datetime import datetime, date,DateField
+from datetime import datetime, date
 # Create your models here.
 
 class TipoUsuario(models.Model):
@@ -29,7 +30,7 @@ class TipoEvento(models.Model):
 class Evento(models.Model):
     nombreEvento = models.CharField(max_length=60,primary_key=True, verbose_name='Nombre Evento')
     descripcion = models.CharField(max_length=300, verbose_name='Descripción')
-    fecha = models.DateField()
+    fecha = models.IntegerField(null=True, verbose_name='fecha')
     precio = models.IntegerField(null=True, verbose_name='Precio')
     categoria = models.ForeignKey(TipoEvento, on_delete=models.CASCADE)
 

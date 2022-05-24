@@ -1,5 +1,5 @@
 from ast import And
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from musica.models import Evento
 from .forms import EventoForm
 
@@ -27,12 +27,8 @@ def biografia(request):
     return render(request, 'musica/biografia.html')
 
 def conciertos(request):
-    form= EventoForm()
-    return render(request, 'musica/conciertos.html',{'nom_form':form}) 
-
-def conciertos(request):
     datos = {
-        'non_form':EventoForm()    
+        'form':EventoForm()    
     }
     
     if(request.method == 'POST'):
@@ -42,3 +38,26 @@ def conciertos(request):
             datos['mensaje'] = 'Evento registrado correctamente'
     return render(request, 'musica/conciertos.html',datos)
 
+def modificar_evento(request, id):
+    evento = Evento.objects.get(nombreEvento=id) #select * from vehiculo where patente = id
+
+    datos = {
+        'form': EventoForm(instance=evento)
+    }
+
+    if (request.method == 'POST'):
+        formulario = EventoForm(data=request.POST, instance=evento)
+        if formulario.is_valid():
+            formulario.save() #modificar a la BD
+            datos['mensaje'] = 'se modifico evento'
+        else:
+            datos['mensaje'] = ' NO se modificó evento'
+
+    return render(request,'musica\modificar_usuario.html', datos)
+
+
+def eliminar_evento(request, id):
+    evento = Evento.objects.get(nombreEvento=id)
+    evento.delete() # delete from Vehiculo where patente = id
+
+    return redirect(to='home')

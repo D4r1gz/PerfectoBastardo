@@ -121,6 +121,7 @@
                             <th>Descripcion</th>
                             <th>Fecha</th>
                             <th>Precio</th>
+                            <th>eliminar</th>
                         </tr>
                         {% for eve in evento%}
                         <tr>
@@ -128,6 +129,7 @@
                             <td>{{eve.descripcion}}</td>
                             <td>{{eve.fecha}}</td>
                             <td>${{eve.precio}}</td>
+                            
                         </tr>
                         {% endfor %}
 
