@@ -1,6 +1,10 @@
 
+from calendar import Calendar, LocaleTextCalendar, TextCalendar, calendar
+from xmlrpc.client import DateTime
 from django.db import models
 from datetime import datetime, date
+
+from django.forms import DateTimeInput
 # Create your models here.
 
 class TipoUsuario(models.Model):
@@ -26,13 +30,18 @@ class TipoEvento(models.Model):
 
     def __str__(self):
         return self.nombreTipoEvento
-
 class Evento(models.Model):
+    
+    
+    
+
     nombreEvento = models.CharField(max_length=60,primary_key=True, verbose_name='Nombre Evento')
     descripcion = models.CharField(max_length=300, verbose_name='Descripción')
-    fecha = models.IntegerField(null=True, verbose_name='fecha')
+    fecha = models.DateField()
     precio = models.IntegerField(null=True, verbose_name='Precio')
     categoria = models.ForeignKey(TipoEvento, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombreEvento
+
+
