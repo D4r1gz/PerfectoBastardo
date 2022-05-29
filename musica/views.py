@@ -34,8 +34,18 @@ def conciertos(request):
     if(request.method == 'POST'):
         formulario = EventoForm(request.POST)
         if formulario.is_valid():
+            print('valido')
+            evento=Evento()
+            evento.nombreEvento = formulario.cleaned_data['nombreEvento']
+            evento.descripcion = formulario.cleaned_data['descripcion']
+            evento.fecha = formulario.cleaned_data['fecha']
+            evento.precio = formulario.cleaned_data['precio']
+            evento.categoria = formulario.cleaned_data['categoria']
             formulario.save()
             datos['mensaje'] = 'Evento registrado correctamente'
+        else:
+            print('no valido')
+            print(formulario.errors)
     return render(request, 'musica/conciertos.html',datos)
 
 def modificar_evento(request, id):
@@ -48,12 +58,18 @@ def modificar_evento(request, id):
     if (request.method == 'POST'):
         formulario = EventoForm(data=request.POST, instance=evento)
         if formulario.is_valid():
+            evento=Evento()
+            evento.nombreEvento = formulario.cleaned_data['nombreEvento']
+            evento.descripcion = formulario.cleaned_data['descripcion']
+            evento.fecha = formulario.cleaned_data['fecha']
+            evento.precio = formulario.cleaned_data['precio']
+            evento.categoria = formulario.cleaned_data['categoria']
             formulario.save() #modificar a la BD
             datos['mensaje'] = 'se modifico evento'
         else:
             datos['mensaje'] = ' NO se modificó evento'
 
-    return render(request,'musica\modificar_usuario.html', datos)
+    return render(request,'musica\modificar_evento.html', datos)
 
 
 def eliminar_evento(request, id):
