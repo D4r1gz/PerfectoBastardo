@@ -3,7 +3,9 @@ from calendar import Calendar, LocaleTextCalendar, TextCalendar, calendar
 from django.db import models
 from datetime import datetime, date
 
-from django.forms import DateTimeInput
+from django.forms import DateInput, DateTimeInput
+
+from perfectoBastardo.settings import TIME_ZONE
 # Create your models here.
 
 class TipoUsuario(models.Model):
