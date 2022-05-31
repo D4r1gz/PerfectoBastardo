@@ -1,9 +1,15 @@
 from django.urls import path
-from .views import home, discografia, galeria,formulario_registro,inicio_sesion 
+from .views import home, biografia, merchandising, discografia, galeria, formulario_registro, inicio_sesion, conciertos, modificar_evento, eliminar_evento
+ 
 urlpatterns = [
     path('', home,name="home"),
     path('discografia', discografia, name="discografia"),
     path('formulario_registro', formulario_registro, name="formulario_registro"),
     path('galeria', galeria, name="galeria"),
     path('inicio_sesion', inicio_sesion, name="inicio_sesion"),
+    path('conciertos', conciertos, name="conciertos"),
+    path('biografia', biografia, name="biografia"),
+    path('merchandising', merchandising, name="merchandising"),
+    path('modificar_evento/<id>', modificar_evento, name='form_mod_evento'),
+    path('eliminar_evento/<id>', eliminar_evento, name='form_ele_evento'),
 ]

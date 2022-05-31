@@ -5,14 +5,14 @@ function contrasenna() {
   var contra2 = document.getElementById("peace").value;
 
   if (contra1 == "", contra2 == "") {
-    document.getElementById("errorcontrasena").innerHTML = "debe escribir una contraseña";
+    document.getElementById("errorcontrasena").innerHTML = "Debe escribir una contraseña";
     document.getElementById("contrasena").style.borderColor = "#dc143c";
     document.getElementById("peace").style.borderColor = "#dc143c";
   } else {
 
   }
   if (contra1 != contra2) {
-    document.getElementById("errorcontrasena").innerHTML = "las contraseñas no son iguales";
+    document.getElementById("errorcontrasena").innerHTML = "Las contraseñas no son iguales";
     document.getElementById("contrasena").style.borderColor = "#dc143c";
     document.getElementById("peace").style.borderColor = "#dc143c";
   }
@@ -26,13 +26,13 @@ function email() {
   var a = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
   if (email.length == 0) {
-    document.getElementById("erroremail").innerHTML = "debe escribir un email";
+    document.getElementById("erroremail").innerHTML = "Debe escribir un email";
     document.getElementById("emaail").style.borderColor = "#dc143c";
   } else {
 
   }
   if (!a.exec(email)) {
-    document.getElementById("erroremail").innerHTML = "el email no esta bien escrito";
+    document.getElementById("erroremail").innerHTML = "El email no es válido";
     document.getElementById("emaail").style.borderColor = "#dc143c";
   }
 
@@ -42,8 +42,8 @@ function nombrefr() {
   var nombre = document.getElementById("nombrefr").value;
   var apellido = document.getElementById("apellidofr").value;
   if (nombre.length == 0 && apellido.length == 0) {
-    document.getElementById("errornombre").innerHTML = "debe escribir un nombre";
-    document.getElementById("errorapellido").innerHTML = "debe escribir al menos 1 apellido ";
+    document.getElementById("errornombre").innerHTML = "Debe escribir un nombre";
+    document.getElementById("errorapellido").innerHTML = "Debe escribir al menos un apellido ";
     document.getElementById("nombrefr").style.borderColor = "#dc143c";
     document.getElementById("apellidofr").style.borderColor = "#dc143c";
   }
@@ -52,7 +52,7 @@ function nombrefr() {
 function telefono() {
   var telefono = document.getElementById("telefono").value;
   if (telefono.length == 0) {
-    document.getElementById("errortelefono").innerHTML = "debe escribir un telefono";
+    document.getElementById("errortelefono").innerHTML = "Debe escribir un teléfono";
     document.getElementById("telefono").style.borderColor = "#dc143c";
   }
 }
@@ -64,20 +64,20 @@ function contacto() {
   var a = /^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
   if (nombrec.length == 0) {
-    document.getElementById("errornomc").innerHTML = "debe escribir un nombre";
+    document.getElementById("errornomc").innerHTML = "Debe escribir un nombre";
   }
 
   if (emailc.length == 0) {
-    document.getElementById("erroremc").innerHTML = "debe escribir un correo";
+    document.getElementById("erroremc").innerHTML = "Debe escribir un correo";
   } else {
 
   }
   if (!a.exec(emailc)) {
-    document.getElementById("erroremc").innerHTML = "el email no esta bien escrito";
+    document.getElementById("erroremc").innerHTML = "El email no es válido";
   }
 
   if (mensajec.length == 0) {
-    document.getElementById("errormensc").innerHTML = "debe escribir un mensaje";
+    document.getElementById("errormensc").innerHTML = "Debe escribir un mensaje";
   }
 
 }
@@ -90,13 +90,13 @@ $(document).ready(function () {
     var nombreis = $("#nombreis").val();
     var nombrefr = $("nombrefr").val();
     if (nombreis == "") {
-      $("#errornombreis").html("escriba un nombre");
+      $("#errornombreis").html("Ingrese un nombre");
       $("#nombreis").css({
         'borderColor': '#dc143c'
       });
 
     } else if (nombreis != nombrefr) {
-      $("#errornombreis").html("el nombre no es correcto");
+      $("#errornombreis").html("El nombre no es Válido");
       $("#nombreis").css({
         'borderColor': '#dc143c'
       });
@@ -109,12 +109,12 @@ $(document).ready(function () {
     var contrafr = $("#peace").val();
 
     if (contrais == "") {
-      $("#errorcontrasenais").html("escriba una contraseña");
+      $("#errorcontrasenais").html("Escribe una contraseña");
       $("#contra3").css({
         'borderColor': '#dc143c'
       });
     } else if (contrais != contrafr) {
-      $("#errorcontrasenais").html("la contraseña no es coreccta");
+      $("#errorcontrasenais").html("La contraseña no es coreccta");
       $("#contra3").css({
         'borderColor': '#dc143c'
       });

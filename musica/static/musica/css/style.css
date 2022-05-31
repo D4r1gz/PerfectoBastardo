@@ -3,20 +3,75 @@
     --primarycolor: #e8ded2;
     --bcolor: #a3d2ca;
     --ccolor: #d6d6cf;
-    --dcolor: #304163;
+    --dcolor: #cde0ec;
     --ecolor: #c2e08a;
-    --fcolor: #304163;
+    --fcolor: #0b84a8;
+
+}
+@media only screen and (max-width: 414px) {
+    .navegacion-principal {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1%;
+            
+    }
+    .interior{
+        max-width: auto;
+        background-color: var(--fcolor);
+    }
+
+    .banner {
+        padding: 0%;
+        width: 500px;
+        height: auto;
+    }
+    .box-shadow {
+        -webkit-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        -moz-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        margin: auto;
+        border-radius: 3rem;
+        height: 500px; 
+        
+    }
+    .carrito {
+        -webkit-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        -moz-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        margin: auto;
+        border-radius: 3rem;
+        height: 500px; 
+        
+    }
+    .fechas {
+        -webkit-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        -moz-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        margin: auto;
+        border-radius: 3rem;
+        height: 500px; 
+        text-align: center;
+        
+    }
+    
+    .jiji {
+        -webkit-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        -moz-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+        margin: auto;
+        border-radius: 3rem;
+        height: auto; 
+        
+    }
 
 }
 
 html {
-    font-size:  62.5%;
+    margin:0;
     box-sizing: border-box;
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
-}
+
 
 body {
     
@@ -28,11 +83,7 @@ body {
 
 }
 
-.disco{
-    margin: auto;
-    background-color: var(--ccolor);
-    background-image: linear-gradient(to top, var(--primarycolor) 0%, var(--dcolor) 100%); 
-}
+
 main {
     padding: 40px;
       
@@ -50,30 +101,23 @@ header* {
     height: auto;
 }
 
-footer {
-    background-color: var(--fcolor);
-    color: var(--primarycolor);
 
-    margin: 0 auto 0 auto;
-    padding: 1rem;
-    display: flex;
-
-}
 h1 {
-    font-size: 3.8rem;
+    font-size: 6.0rem;
 }
 
 h2 {
-    font-size: 2.8rem;
+    font-size: 4.8rem;
 }
 
 h3 {
-    font-size: 1.8rem;
+    font-size: 2.8rem;
 }
 
 h1,h2,h3 {
     text-align: center;   
 }
+
 
 *{
 	margin: 0;
@@ -90,6 +134,8 @@ h1,h2,h3 {
     background-color: var(--fcolor);
 }
 
+
+
 .navegacion{
     
     
@@ -103,6 +149,11 @@ h1,h2,h3 {
     font-weight: normal;
     padding: 3rem;
 }
+
+.contenedor-video{
+    text-align: center;
+}
+
 .navegacion ul{
 	list-style: none;
 	padding: 0 10px;
@@ -120,13 +171,13 @@ h1,h2,h3 {
 	color: #ffffff;
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 14px;
+	font-size: 30px;
 	font-weight: bold;
 	padding: 12px 20px;
 	transition: .3s linear;
 }
 .navegacion ul li a:hover{
-	color: #138ab9;
+	color: #0c4e68;
 	transform: scale(1.1);
 }
 .navegacion ul li:hover .hijos{
@@ -135,7 +186,7 @@ h1,h2,h3 {
 .navegacion .submenu .hijos{
 	display: none;
     
-	background: #52618d;
+	background: #ced1da;
 	position: absolute;
 	width: auto;
 }
@@ -155,25 +206,66 @@ h1,h2,h3 {
     max-width: 120rem;
     margin: 0 auto 0 auto;
 }
+.d-block {
+    width: 25rem;
+    height: 400px;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 
+    
+    
+   
+}
 .box-shadow {
     -webkit-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
     -moz-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
     box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
-    padding: 8rem;
-    margin:  2rem;
-    border-radius: 2rem;
-    max-width: auto;
+    margin: auto;
+    border-radius: 3rem;
+    width: 800px;
+    height: 500px; 
+    padding: 2rem;
+}
+.carrito {
+    -webkit-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+    -moz-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+    box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+    margin: auto;
+    border-radius: 3rem;
+    width: 800px;
+    height: 500px; 
     
+}
+.fechas {
+    -webkit-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+    -moz-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+    box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+    margin: auto;
+    border-radius: 3rem;
+    width: 900px;
+    height: 500px; 
+    text-align: center;
+    padding: 5rem;
     
 }
 
-@media (min-width: 768px) {
-    .navegacion-principal {
-        flex-direction: row;
-        justify-content: space-between;        
-    }
+.paracontacto {
+    -webkit-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+    -moz-box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+    box-shadow: -1px 3px 20px -4px rgba(0,0,0,0.34);
+    margin: auto;
+    border-radius: 3rem;
+    width: auto ;
+    height: auto;
 
+}
+
+.disco {
+    padding: 2rem;
+    
+   
 }
 
 .boton:hover {
@@ -188,10 +280,11 @@ h1,h2,h3 {
 
 .formulario {
 
-    width: min(60rem, 100%);
+    width: min(30rem, 100%);
     margin: 0 auto;
-    padding: 2rem;   
-
+    padding: 2rem;
+    font-size: 70%;   
+    
 }
 
 .formulario fieldset {
@@ -201,7 +294,7 @@ h1,h2,h3 {
 
 .formulario legend {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     text-transform: uppercase;  
     font-weight: 700;
     margin-bottom: 2rem;
@@ -217,17 +310,13 @@ h1,h2,h3 {
 }
 
 .campo label {
-    color: var(--dcolor);
+    color:#000000;
     font-weight: bold;
     margin-bottom: .5rem;
     display: block;    
 }
 
 
-.contenedor-disco {
-
-    padding: 9rem;
-}
 
 .input-text {
     width: 100%;
@@ -257,11 +346,21 @@ h1,h2,h3 {
 
 }
 
-
-
-.social-media{
-    align-items: flex-end;
-}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
 
 
 #menu_disco {
@@ -441,4 +540,14 @@ legend{
 
 #errormensc{
     color: #dc143c;
+}
+
+footer {
+    background-color: var(--fcolor);
+    color: var(--primarycolor);
+
+    margin: 0 auto 0 auto;
+    padding: 1rem;
+    display: flex;
+
 }
