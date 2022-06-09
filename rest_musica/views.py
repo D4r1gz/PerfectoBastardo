@@ -27,9 +27,9 @@ def lista_evento(request):
 
 
 @api_view(['GET','PUT','DELETE'])
-def detalle_evento(request, id):
+def detalle_evento(request, eve):
     try:
-        evento= Evento.objects.get(nombreEvento=id)
+        evento= Evento.objects.get(nombreEvento=eve)
     except Evento.DoesNotExist:
         return Response(status= status.HTTP_404_NOT_FOUND)
     if request.method =='GET':
