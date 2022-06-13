@@ -1,16 +1,19 @@
 from wsgiref.util import request_uri
 from django.shortcuts import render
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from musica.models import Evento
 from rest_musica.serializers import eventoSerializer
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 @csrf_exempt
 @api_view(['GET','POST'])
+@permission_classes((IsAuthenticated,))
 def lista_evento(request):
     if request.method =='GET':
         listaEvento = Evento.objects.all()
@@ -27,6 +30,7 @@ def lista_evento(request):
 
 
 @api_view(['GET','PUT','DELETE'])
+@permission_classes((IsAuthenticated,))
 def detalle_evento(request, id):
     try:
         evento= Evento.objects.get(nombreEvento=id)
