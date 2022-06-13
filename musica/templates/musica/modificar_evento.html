@@ -58,18 +58,18 @@
         <form method="POST" action="" id="formulario"enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form_group">
+
                 {{form.as_table}}
 
             </div>
             
-            <input type="submit" class="btn btn-danger" id="enviar" value="Enviar">
+            <input type="submit" class="btn btn-danger" id="enviar" value="modificar">
             <input type="reset" class="btn btn-primary" id="limpiar" value="Limpiar">
             <div id="error" class="alert alert-danger" role="alert">
                 {{mensaje}}
             </div>
 
         </form>
-
     </div>
     
 <footer>
@@ -111,6 +111,7 @@
     </section>
 
 </footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -121,6 +121,8 @@
                             <th>Descripcion</th>
                             <th>Fecha</th>
                             <th>Precio</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
                         </tr>
                         {% for eve in evento%}
                         <tr>
@@ -128,6 +130,9 @@
                             <td>{{eve.descripcion}}</td>
                             <td>{{eve.fecha}}</td>
                             <td>${{eve.precio}}</td>
+                            <td><a href="{% url 'form_mod_evento' eve.nombreEvento %}">Mod</a></td>
+                            <td><a href="{% url 'form_ele_evento' eve.nombreEvento %}">X</a></td>
+                            
                         </tr>
                         {% endfor %}
 
