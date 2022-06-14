@@ -1,5 +1,4 @@
 
-from calendar import Calendar, LocaleTextCalendar, TextCalendar, calendar
 from django.db import models
 from datetime import datetime, date
 
@@ -35,7 +34,7 @@ class Evento(models.Model):
 
     nombreEvento = models.CharField(max_length=60,primary_key=True, verbose_name='Nombre Evento')
     descripcion = models.CharField(max_length=300, verbose_name='Descripción')
-    fecha= models.DateField()
+    fecha= models.DateField(null= True)
     precio = models.IntegerField(null=True, verbose_name='Precio')
     categoria = models.ForeignKey(TipoEvento, on_delete=models.CASCADE)
 
