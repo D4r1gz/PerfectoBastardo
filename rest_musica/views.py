@@ -19,7 +19,7 @@ def lista_evento(request):
         listaEvento = Evento.objects.all()
         serializer = eventoSerializer(listaEvento, many= True)
         return Response(serializer.data)
-    elif request == 'POST':
+    elif request.method == 'POST':
         dataP = JSONParser().parse(request)
         serializer =eventoSerializer(data=dataP)
         if serializer.is_valid():
