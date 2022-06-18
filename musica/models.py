@@ -6,7 +6,6 @@ from django.forms import DateInput, DateTimeInput
 
 from perfectoBastardo.settings import TIME_ZONE
 # Create your models here.
-
 class TipoEvento(models.Model):
     idEvento = models.IntegerField(primary_key=True,verbose_name='Id de Evento')
     nombreTipoEvento = models.CharField(max_length=60,verbose_name='Nombre Tipo de Evento')
@@ -33,16 +32,25 @@ class TipoUser(models.Model):
 
 class User(models.Model):
     iduser = models.IntegerField(primary_key=True,verbose_name='Id')
-    nombreUsuario = models.CharField(max_length=50,verbose_name='nombre')
+    nombreUser = models.CharField(max_length=50,verbose_name='nombre')
     Contrasenna = models.CharField(max_length=6, verbose_name='contrasenna')
     correo = models.EmailField()
     Fecha_nac = models.DateField()
     usuario = models.ForeignKey(TipoUser, on_delete=models.CASCADE)
 
     def __str__(self):
+        return self.nombreUser
+
+class Usuario(models.Model):
+    idusuario = models.IntegerField(primary_key=True, serialize=False, verbose_name='Id')
+    nombreUsuario = models.CharField(max_length=50, verbose_name='nombre')
+    Contrasenna = models.CharField(max_length=6, verbose_name='contrasenna')
+    Fecha_nac = models.DateField()
+    usuario = models.ForeignKey(TipoUser, on_delete=models.CASCADE)
+
+    def __str__(self):
         return self.nombreUsuario
-
-
+        
 class Pedido(models.Model):
     idpedido = models.IntegerField(primary_key=True,verbose_name='Id')
     nombrePedido= models.CharField(max_length=50,verbose_name='nombre_pedido')
