@@ -17,4 +17,4 @@ class EventoForm(ModelForm):
             self.fields[field].widget.attrs.update({
                 'class': 'form-control'
         })
-        self.fields['fecha'].input_formats = ['%d/%m/%Y']
+            self.fields['fecha'].input_formats = ['%d/%m/%Y','%d-%m-%Y']
