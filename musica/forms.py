@@ -1,6 +1,7 @@
+from dataclasses import fields
 from django import forms
 from django.forms import ModelForm
-from .models import Evento
+from .models import Evento, User
 class DateTimeInput(forms.DateTimeInput):
     input_type = 'datetime-local'
 
@@ -18,3 +19,8 @@ class EventoForm(ModelForm):
                 'class': 'form-control'
         })
             self.fields['fecha'].input_formats = ['%d/%m/%Y','%d-%m-%Y']
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['nombreUser','Contrasenna','correo','telefono']

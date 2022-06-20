@@ -1,8 +1,8 @@
 from ast import And
 from time import strftime
 from django.shortcuts import render,redirect
-from musica.models import Evento
-from .forms import EventoForm
+from musica.models import Evento,User
+from .forms import EventoForm,UserForm
 
 # Create your views here.
 
@@ -73,3 +73,19 @@ def eliminar_evento(request, id):
     evento.delete() 
 
     return redirect(to='home')
+
+def usuario(request):
+    datos ={
+        'forma':UserForm()
+    }
+
+    if(request.method == 'POST'):
+        print("adentro")
+        formulario = UserForm(request.POST)
+        if formulario.is_valid():
+            print('valido')
+            formulario.save()
+            datos['mensaje'] = 'registro exitoso'
+        else:
+            print(formulario.errors)
+    return render(request, 'musica/formulario_registro.html', datos)
