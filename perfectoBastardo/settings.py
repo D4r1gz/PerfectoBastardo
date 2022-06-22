@@ -41,7 +41,10 @@ INSTALLED_APPS = [
     'rest_musica',
     'rest_framework',
     'rest_framework.authtoken',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,3 +1,4 @@
+
 from wsgiref.util import request_uri
 from django.shortcuts import render
 from rest_framework import status
@@ -5,10 +6,11 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
-from musica.models import Evento
+from musica.models import Evento, Useer
 from rest_musica.serializers import eventoSerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+
 # Create your views here.
 
 @csrf_exempt
@@ -51,4 +53,4 @@ def detalle_evento(request, id):
     elif request.method == "DELETE":
         evento.delete()
         return Response(status= status.HTTP_204_NO_CONTENT)
-    
+

@@ -1,8 +1,8 @@
 from ast import And
 from time import strftime
 from django.shortcuts import render,redirect
-from musica.models import Evento,User
-from .forms import EventoForm,UserForm
+from musica.models import Evento,Useer
+from .forms import EventoForm,UseerForm
 
 # Create your views here.
 
@@ -76,12 +76,12 @@ def eliminar_evento(request, id):
 
 def usuario(request):
     datos ={
-        'forma':UserForm()
+        'forma':UseerForm()
     }
 
     if(request.method == 'POST'):
         print("adentro")
-        formulario = UserForm(request.POST)
+        formulario = UseerForm(request.POST)
         if formulario.is_valid():
             print('valido')
             formulario.save()
