@@ -3,7 +3,7 @@ from calendar import Calendar, LocaleTextCalendar, TextCalendar, calendar
 from enum import _auto_null
 from django.db import models
 from datetime import datetime, date
-
+from django.contrib.auth.models import AbstractUser
 from django.forms import DateInput, DateTimeInput
 
 from perfectoBastardo.settings import TIME_ZONE

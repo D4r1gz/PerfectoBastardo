@@ -1,9 +1,15 @@
 from ast import And
+from lib2to3.pgen2 import token
 from time import strftime
+from django.forms import PasswordInput
 from django.shortcuts import render,redirect
 from musica.models import Evento,Useer
 from .forms import EventoForm,UseerForm
-
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import check_password
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 def home(request):
@@ -20,8 +26,7 @@ def galeria(request):
     return render(request, 'musica/galeria.html')
 def formulario_registro(request):
     return render(request, 'musica/formulario_registro.html')
-def inicio_sesion(request):
-    return render(request, 'musica/inicio_sesion.html')
+
 def merchandising(request):
     return render(request, 'musica/merchandising.html')
 def biografia(request):
@@ -80,12 +85,37 @@ def usuario(request):
     }
 
     if(request.method == 'POST'):
-        print("adentro")
         formulario = UseerForm(request.POST)
         if formulario.is_valid():
-            print('valido')
-            formulario.save()
+            formulario.save()            
             datos['mensaje'] = 'registro exitoso'
         else:
             print(formulario.errors)
     return render(request, 'musica/formulario_registro.html', datos)
+    
+def inicio_sesion (request):
+    datos ={
+        'ini': UseerForm()
+    }
+    if (request.method == 'POST'):
+        token = Token()
+        usu1 = request.POST.get('username')
+        pas= request.POST.get('password')
+        user = authenticate(request, username=usu1, password=pas)
+        if user is not None:
+            login(request, user)
+            datos['mensaje']='inicio exitoso'
+        else:
+            print(usu1, pas)
+    return render(request,'musica/inicio_sesion.html', datos)
+
+def logout (request):
+    usu1 = request.POST.get('username')
+    pas= request.POST.get('password')
+    user = authenticate(request, username=usu1, password=pas)
+    if user is not None:
+        logout(request, user)
+        
+        return render(request,'musica/index.html')
+
+
