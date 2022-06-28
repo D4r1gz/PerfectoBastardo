@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,61 +55,23 @@
 
     <section id="registro">
         <fieldset>
-            <form action="" class="formulario paracontacto">
-                <div id="nombre1">
-                    <label id="nombre">Nombre</label>
-                    <br>
-                    <input type="text" id="nombrefr" placeholder=" Ingrese su nombre">
-                    <br>
-                    <span id="errornombre"></span>
-                </div>
-                <br>
-                <div id="apellido1">
-                    <label id="apellido">Apellido</label>
-                    <br>
-                    <input type="text" id="apellidofr" placeholder=" Ingrese su apellido">
-                    <br>
-                    <span id="errorapellido"></span>
-                </div>
-                <br>
-                <div class="email">
-                    <label id="email">Correo</label>
-                    <br>
-                    <input type="email" name="mail" id="emaail" placeholder=" Escriba su correo ">
-                    <br>
-                    <span id="erroremail"></span>
-                </div>
-                <br>
-                <div>
-                    <label id="telefono1">Teléfono</label>
-                    <br>
-                    <input type="number" name="telefono" id="telefono" placeholder=" Escriba su teléfono">
-                    <br>
-                    <span id="errortelefono"></span>
-                </div>
-                <br>
-                <div id="contrasenna1">
-                    <label id="contra">Contraseña</label>
-                    <br>
-                    <input type="password" name="pass" id="contrasena" placeholder=" Ingrese contraseña">
+            <form method="post" action="" class="formulario paracontacto">
+                {% csrf_token %}
+                
+                <div class="form_group" id="formulario">
+                    {{forma | crispy}}
 
-                </div>
-                <br>
-                <div id="contraa2">
-                    <label id="contra2">Repita Contraseña</label>
-                    <br>
-                    <input type="password" name="pass2" id="peace" placeholder=" Vuelva a escribir su contraseña">
-                    <br>
-                    <span id="errorcontrasena"></span>
-                </div>
-                <div>
-                    <input type="checkbox" name="valido" id="validar">
-                    <label id="validar1">¿Acepta los términos y condiciones?
+                    <div>
+                        <input type="checkbox" name="valido" id="validar">
+                        <label id="validar1">¿Acepta los términos y condiciones?
 
-                    </label>
+                        </label>
+                    </div>
                 </div>
                 <br>
-                <button type="button" onclick="todos()">Enviar</button>
+                <input type="submit" value= "enviar"onclick="todos()">
+                <div>{{ mensaje }}</div>
+                
             </form>
         </fieldset>
     </section>

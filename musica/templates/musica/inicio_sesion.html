@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +47,7 @@
                 <ul class="hijos">
                     <li><a href="{%url 'formulario_registro' %}">Registrarse</a></li>
                     <li><a href="{%url 'inicio_sesion' %}">Inicio de Sesión</a></li>
+
                 </ul>
             </li>
          
@@ -57,27 +58,17 @@
         <fieldset>
             
             
-            <form action="" class="formulario box-shadow">
+            <form method="POST" action="" class="formulario box-shadow">
+                {% csrf_token %}
                 <h1>
                     Bienvenido
                 </h1>
-                <div>
-                    <label >Usuario</label>
-                    <br>
-                    <input type="text" id="nombreis" placeholder=" Ingrese su usuario">
-                    <br>
-                    <span id="errornombreis"></span>
+                <div class="form_group" id="formulario">
+                    {{ini.as_table}}
                 </div>
                 <br>
-                <div>
-                    <label >Contraseña</label>
-                    <br>
-                    <input type="password" id="contra3" placeholder=" Ingrese su contraseña">
-                    <br>
-                    <span id="errorcontrasenais"></span>
-                </div>
-                <br>
-                <button type="button" id="is">Iniciar Sesión</button>
+                <button type="submit" id="is">Iniciar Sesión</button>
+                <div>{{ mensaje }}</div>
             </form>
         </fieldset>
     </section>

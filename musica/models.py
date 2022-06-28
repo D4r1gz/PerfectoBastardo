@@ -1,8 +1,9 @@
 
 from calendar import Calendar, LocaleTextCalendar, TextCalendar, calendar
+from enum import _auto_null
 from django.db import models
 from datetime import datetime, date
-
+from django.contrib.auth.models import AbstractUser
 from django.forms import DateInput, DateTimeInput
 
 from perfectoBastardo.settings import TIME_ZONE
@@ -42,5 +43,42 @@ class Evento(models.Model):
     def __str__(self):
         return self.nombreEvento
 
+class TipoUser(models.Model):
+    id_User = models.AutoField(primary_key=True,verbose_name='Id',auto_created=True)
+    tipo_User = models.CharField(max_length=50,verbose_name='tipo')
+
+    def __str__(self):
+        return self.tipo_User
+
+class Useer(models.Model):
+    iduser = models.AutoField(primary_key=True,auto_created=True,verbose_name='Id')
+    nombreUser = models.CharField(max_length=50,verbose_name='nombre')
+    Contrasenna = models.CharField(max_length=100, verbose_name='contrasenna')
+    correo = models.EmailField(null=True)
+    telefono = models.IntegerField(verbose_name='telefono',null=False)
+    usuario = models.ForeignKey(TipoUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nombreUser
+        
+class Pedido(models.Model):
+    idpedido = models.AutoField(primary_key=True,verbose_name='Id')
+    nombrePedido= models.CharField(max_length=50,verbose_name='nombre_pedido')
+    stock = models.IntegerField(verbose_name='categoria_pedido')
+    precio = models.IntegerField(verbose_name='precio')
+    imagen = models.ImageField()
+
+    def __str__(self):
+        return self.tipoUsu
+
+class DetallePedido(models.Model):
+    idDetalle = models.AutoField(primary_key=True,verbose_name='Id',auto_created=True)
+    fechaPedido = models.DateField()
+    nombre_user = models.ForeignKey(Useer, on_delete=models.CASCADE)
+    cantidad= models.IntegerField(verbose_name='cantidad')
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.idDetalle
 
 

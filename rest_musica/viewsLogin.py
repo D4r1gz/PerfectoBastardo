@@ -1,5 +1,6 @@
 from lib2to3.pgen2 import token
 from tabnanny import check
+from urllib import request
 from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -9,15 +10,22 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from rest_framework.authtoken.models import Token
+from musica.forms import UseerForm
+from musica.models import Useer
 
+from rest_musica.serializers import useerSerializer
 @api_view(['POST'])
 def login(request):
-    data = JSONParser().parse(request)
+    
+    data = UseerForm(request.POST)
     username = data['username']
     password = data['password']
     try:
+        print("adentro")
         user = User.objects.get(username = username)
-    except User.DoesNotExist:
+        print("valido")
+    except Useer.DoesNotExist:
+        print(data.errors)
         return Response("Usuario Inválido")
 
     pass_valido = check_password(password, user.password)
@@ -25,4 +33,5 @@ def login(request):
         return Response("Contraseña Incorrecta")
 
     token, created = Token.objects.get_or_create(user=user)
+    print("creado")
     return Response(token.key)
