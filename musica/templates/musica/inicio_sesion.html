@@ -1,5 +1,10 @@
 {% load static %}
+<<<<<<< HEAD
 {% load crispy_forms_tags %}
+=======
+{% load socialaccount %}
+
+>>>>>>> claudio
 <!DOCTYPE html>
 <html lang="en">
 
@@ -67,8 +72,29 @@
                     {{ini.as_table}}
                 </div>
                 <br>
+<<<<<<< HEAD
                 <button type="submit" id="is">Iniciar Sesión</button>
                 <div>{{ mensaje }}</div>
+=======
+                <div>
+                    <label >Contraseña</label>
+                    <br>
+                    <input type="password" id="contra3" placeholder=" Ingrese su contraseña">
+                    <br>
+                    <span id="errorcontrasenais"></span>
+                </div>
+                <br>
+                <button type="button" id="is">Iniciar Sesión</button>  
+                <br>
+                <div class="col">
+                    <br>
+                    <a href="{% provider_login_url 'google' %}">
+                    <img src="{% static 'musica\img\logingoogle.jpg' %}" alt="loggoogle">    
+                    </a>
+                
+                </div>
+
+>>>>>>> claudio
             </form>
         </fieldset>
     </section>
