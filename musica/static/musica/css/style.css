@@ -316,6 +316,11 @@ h1,h2,h3 {
     display: block;    
 }
 
+.google {
+    text-align: center; 
+    width: auto;   
+}
+
 
 
 .input-text {
