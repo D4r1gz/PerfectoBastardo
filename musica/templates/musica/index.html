@@ -140,9 +140,10 @@
                             <td>{{eve.descripcion}}</td>
                             <td>{{eve.fecha}}</td>
                             <td>${{eve.precio}}</td>
-                            <td><a href="{% url 'form_mod_evento' eve.nombreEvento %}">Mod</a></td>
-                            <td><a href="{% url 'form_ele_evento' eve.nombreEvento %}">X</a></td>
-                            
+                            {% if user.is_authenticated %}
+                                <td><a href="{% url 'form_mod_evento' eve.nombreEvento %}">Mod</a></td>
+                                <td><a href="{% url 'form_ele_evento' eve.nombreEvento %}">X</a></td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
 
