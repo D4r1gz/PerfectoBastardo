@@ -23,10 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('musica.urls')),
     path('api/', include('rest_musica.urls')),
-<<<<<<< HEAD
-=======
     path('accounts/', include('allauth.urls')),
     path('', TemplateView.as_view(template_name="index.html")),
     path('logout', LogoutView.as_view(),name='logout'),
->>>>>>> claudio
 ]

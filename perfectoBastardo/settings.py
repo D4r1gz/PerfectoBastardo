@@ -47,12 +47,8 @@ INSTALLED_APPS = [
     'rest_musica',
     'rest_framework',
     'rest_framework.authtoken',
-<<<<<<< HEAD
     'crispy_forms',
 
-=======
-    
->>>>>>> claudio
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
