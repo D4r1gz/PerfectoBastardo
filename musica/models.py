@@ -76,7 +76,7 @@ class Useer(models.Model):
 
 class Pedido(models.Model):
     def url(self, filename):
-        ruta = "musica/static/img/%s/%s" % (self.nombre, str(filename))
+        ruta = "media/productos/%s/%s" % (self.nombrePedido, str(filename))
         return ruta
 
     idpedido = models.AutoField(primary_key=True, verbose_name='Id')
@@ -87,7 +87,7 @@ class Pedido(models.Model):
     imagen = models.ImageField(upload_to=url,null=True,blank=True)
 
     def __str__(self):
-        return self.tipoUsu
+        return self.nombrePedido
 
 
 class DetallePedido(models.Model):

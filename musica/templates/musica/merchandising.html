@@ -53,36 +53,30 @@
           </ul>
         </nav>
     </div>
+
+    {% for p in productos %}
+            
     <div class="card">
 
-        <img src="{%static 'musica/img/gorro.jpg' %}" alt="">
+        <img src="/static/{{ p.imagen }}" alt="">
         <div class="con-text">
             <h2>
-                gorro
+                {{p.nombrePedido}}
             </h2>
             <p>
-                $$$$
+                precio: ${{p.precio}}
+                <br>
+                unidades: {{p.stock}}
                 <button >
                     <a href="{%url 'carrito' %}">comprar</a>
                 </button>
             </p>
         </div>
     </div>
-    <div class="card">
 
-        <img src="{%static 'musica/img/discohd.jpg' %}" alt="">
-        <div class="con-text">
-            <h2>
-                disco nuevo
-            </h2>
-            <p>
-                $$$$
-                <button>
-                    comprar
-                </button>
-            </p>
-        </div>
-    </div>
+    {% endfor %}
+
+
     <footer>
         
 

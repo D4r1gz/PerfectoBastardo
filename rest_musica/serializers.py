@@ -4,6 +4,7 @@ from rest_framework import serializers
 from musica.models import Evento, Useer
 from django.contrib.auth import password_validation, authenticate
 from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
 
 class eventoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,5 +13,5 @@ class eventoSerializer(serializers.ModelSerializer):
 
 class useerSerializer(serializers.ModelSerializer):
     class Meta:
-        model =Useer
-        fields = ['iduser','nombreUser','Contrasenna','correo','telefono','usuario']
+        model =User
+        fields = ['username','password','token']

@@ -1,16 +1,19 @@
 from ast import And
 import email
 from lib2to3.pgen2 import token
+from multiprocessing import context
 from time import strftime
 from django.forms import PasswordInput
 from django.shortcuts import render, redirect
-from musica.models import Evento, Useer
+from musica.models import Evento, Pedido, Useer
+from rest_musica.serializers import useerSerializer
 from .forms import EventoForm, LoginForm, UseerForm
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from django.contrib.auth import authenticate, login
+from django.core.paginator import Paginator, EmptyPage, InvalidPage
 # Create your views here.
 
 
@@ -121,12 +124,13 @@ def inicio_sesion(request):
         'ini': LoginForm()
     }
     if (request.method == 'POST'):
-        token = Token()
         usu1 = request.POST.get('username')
+        u = User.objects.get(username=usu1)
         pas = request.POST.get('password')
-        user = authenticate(request, username=usu1, password=pas)
-        if user is not None:
-            login(request, user)
+        token = Token.objects.get(user=u )
+        useer = authenticate(request, username=usu1, password=pas, token=token)
+        if useer is not None:
+            login(request, useer)
             datos['mensaje'] = 'inicio exitoso'
         else:
             print(usu1, pas)
@@ -134,6 +138,14 @@ def inicio_sesion(request):
 
 
 def logout(request):
-        logout(request)
+    logout(request)
 
-        return render(request, 'musica/index.html')
+    return render(request, 'musica/index.html')
+
+
+def productos_view(request):
+    lista_prod = Pedido.objects.all()
+    datos={
+        'productos':lista_prod
+    }
+    return render(request, 'musica/merchandising.html', datos)
