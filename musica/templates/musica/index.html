@@ -45,7 +45,11 @@
             <li><a href="{%url 'discografia' %}">Discografia</a></li>     
             <li class="submenu">  
                 {% if user.is_authenticated %}
+<<<<<<< HEAD
                     <p>Bienvenido {{ user.username }}</p>
+=======
+                    <p><i class="icon-user icon-white"></i>{{ user.username }}</p>
+>>>>>>> damaris2
                     <a href="{%url 'logout' %}">Cerrar Sesion</a>
                 {% else %}
                     <a href="#Login">Login</a>
@@ -55,9 +59,12 @@
                         </ul>
                     
                 {% endif %}
+<<<<<<< HEAD
 
            
 
+=======
+>>>>>>> damaris2
             </li>
             
           </ul>

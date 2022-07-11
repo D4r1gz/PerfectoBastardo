@@ -60,10 +60,11 @@
         <fieldset>
             
             
-            <form method="POST" action="" class="formulario box-shadow">
-                {% csrf_token %}
+            
+            <div class="container">
                 <h1>
                     Bienvenido
+<<<<<<< HEAD
                 </h1>
                 <div class="form_group" id="formulario">
                     {{ini.as_table}}
@@ -81,6 +82,19 @@
                 </div>
 
             </form>
+=======
+                </h1>  
+                <form method="POST" action="" class="formulario box-shadow">
+                    {% csrf_token %}
+                    <div class="form-control" id="formulario">
+                        {{ini | crispy }}
+                    </div>
+                    <br>
+                    <button type="submit" id="is">Iniciar Sesión</button>
+                    <div>{{ mensaje }}</div>
+                </form>
+            </div> 
+>>>>>>> damaris2
         </fieldset>
     </section>
     <footer>
