@@ -44,11 +44,7 @@ class Evento(models.Model):
     nombreEvento = models.CharField(
         max_length=60, primary_key=True, verbose_name='Nombre Evento')
     descripcion = models.CharField(max_length=300, verbose_name='Descripción')
-<<<<<<< HEAD
     fecha= models.DateField(null=True)
-=======
-    fecha = models.DateField()
->>>>>>> damaris2
     precio = models.IntegerField(null=True, verbose_name='Precio')
     categoria = models.ForeignKey(TipoEvento, on_delete=models.CASCADE)
 
