@@ -42,7 +42,8 @@
             <li><a href="{%url 'conciertos' %}">Conciertos</a></li> 
             <li><a href="{%url 'galeria' %}">Galeria</a></li>
             <li><a href="{%url 'discografia' %}">Discografia</a></li>     
-            <li class="submenu">    
+            <li class="submenu"> 
+                   
                 <a href="#Login">Login</a>
                 <ul class="hijos">
                     <li><a href="{%url 'formulario_registro' %}">Registrarse</a></li>
@@ -68,9 +69,13 @@
                 <br>
                 unidades: {{p.stock}}
                 <button >
-                    <a href="{%url 'carrito' %}">comprar</a>
+                    <a href="{%url 'carrito' p.nombrePedido %}">comprar</a>
                 </button>
             </p>
+            {% if user.is_authenticated %}
+            <button><a href="{%url 'modificar_prod' p.nombrePedido %}"></a>modificar</button>
+            <button><a class= 'eliminar'href="{%url 'eleminar_producto' p.nombrePedido%}"></a>eliminar</button>
+            {% endif %}
         </div>
     </div>
 

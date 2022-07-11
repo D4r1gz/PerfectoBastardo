@@ -5,14 +5,15 @@ from multiprocessing import context
 from time import strftime
 from django.forms import PasswordInput
 from django.shortcuts import render, redirect
+from musica.Carrito import Carrito
 from musica.models import Evento, Pedido, Useer
 from rest_musica.serializers import useerSerializer
-from .forms import EventoForm, LoginForm, UseerForm
+from .forms import EventoForm, LoginForm, UseerForm, productoForm
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 # Create your views here.
 
@@ -45,7 +46,9 @@ def biografia(request):
     return render(request, 'musica/biografia.html')
 
 
-def carrito(request):
+def carrito(request, id):
+    p=Pedido.objects.get(nombrePedido=id)
+    
     return render(request, 'musica/carrito.html')
 
 
@@ -137,7 +140,7 @@ def inicio_sesion(request):
     return render(request, 'musica/inicio_sesion.html', datos)
 
 
-def logout(request):
+def logout_view(request):
     logout(request)
 
     return render(request, 'musica/index.html')
@@ -149,3 +152,47 @@ def productos_view(request):
         'productos':lista_prod
     }
     return render(request, 'musica/merchandising.html', datos)
+
+def modificar_producto(request, id):
+    producto = Pedido.objects.get(nombreEvento=id)
+
+    datos = {
+        'form_p': productoForm(instance=producto)
+    }
+
+    if (request.method == 'POST'):
+        formulario = productoForm(data=request.POST, instance=producto)
+        if formulario.is_valid():
+
+            formulario.save()
+            datos['mensaje'] = 'Se modifico evento'
+        else:
+            datos['mensaje'] = ' No se modificó evento'
+            print(formulario.errors)
+    return render(request, 'musica/modificar_producto.html', datos)
+
+def eliminar_producto(request, id):
+    carrito = Carrito(request)
+    producto = Pedido.objects.get(nombreEvento=id)
+    carrito.eliminar(producto)
+    producto.delete()
+
+    return redirect(to='home')
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Pedido.objects.get(nombrePedido=producto_id)
+    print(producto)
+    carrito.agregar(producto)
+    return render(request, 'musica/merchandising.html')
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Pedido.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect(to='carrito')
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect(to='carrito')

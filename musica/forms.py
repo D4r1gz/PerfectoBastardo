@@ -2,7 +2,7 @@ from dataclasses import fields
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.models import User
-from .models import Evento, Useer
+from .models import Evento, Pedido, Useer
 
 
 class DateTimeInput(forms.DateTimeInput):
@@ -64,3 +64,9 @@ def clean_password_two(self):
 class LoginForm(forms.Form):
 	username = forms.CharField(widget=forms.TextInput())
 	password = forms.CharField(widget=forms.PasswordInput(render_value=False))
+
+
+class productoForm(ModelForm):
+    class Meta:
+        model: Pedido
+        fields=['nombrePedido','stock','precio','imagen']

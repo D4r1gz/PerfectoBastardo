@@ -42,12 +42,18 @@
             <li><a href="{%url 'conciertos' %}">Conciertos</a></li> 
             <li><a href="{%url 'galeria' %}">Galeria</a></li>
             <li><a href="{%url 'discografia' %}">Discografia</a></li>     
-            <li class="submenu">    
-                <a href="#Login">Login</a>
-                <ul class="hijos">
-                    <li><a href="{%url 'formulario_registro' %}">Registrarse</a></li>
-                    <li><a href="{%url 'inicio_sesion' %}">Inicio de Sesión</a></li>
-                </ul>
+            <li class="submenu">  
+                {% if user.is_authenticated %}
+                    <p><i class="icon-user icon-white"></i>{{ user.username }}</p>
+                    <a href="{%url 'logout' %}">Cerrar Sesion</a>
+                {% else %}
+                    <a href="#Login">Login</a>
+                        <ul class="hijos">
+                            <li><a href="{%url 'formulario_registro' %}">Registrarse</a></li>
+                            <li><a href="{%url 'inicio_sesion' %}">Inicio de Sesión</a></li>
+                        </ul>
+                    
+                {% endif %}
             </li>
          
           </ul>
