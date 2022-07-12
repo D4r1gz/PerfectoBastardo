@@ -62,16 +62,11 @@ class Useer(models.Model):
         return self.nombreUser
         
 class Pedido(models.Model):
-    def url(self, filename):
-        ruta = "media/productos/%s/%s" % (self.nombrePedido, str(filename))
-        return ruta
-
-    idpedido = models.AutoField(primary_key=True, verbose_name='Id')
-    nombrePedido = models.CharField(
-        max_length=50, verbose_name='nombre_pedido')
+    idpedido = models.AutoField(primary_key=True,verbose_name='Id')
+    nombrePedido= models.CharField(max_length=50,verbose_name='nombre_pedido')
     stock = models.IntegerField(verbose_name='categoria_pedido')
     precio = models.IntegerField(verbose_name='precio')
-    imagen = models.ImageField(upload_to=url,null=True,blank=True)
+    imagen = models.ImageField()
 
     def __str__(self):
         return self.tipoUsu
