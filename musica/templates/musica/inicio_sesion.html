@@ -39,7 +39,6 @@
         <nav class="navegacion">
           <ul>
             <li><a href="{%url 'home' %}">Inicio</a></li>
-            <li><a href="{%url 'merchandising' %}">Merchandising</a></li>
             {% if user.is_authenticated %}
                 <li><a href="{%url 'conciertos' %}">Conciertos</a></li> 
             {% endif %}
@@ -75,7 +74,7 @@
                     Bienvenido
                 </h1>
                 <div class="form_group" id="formulario">
-                    {{ini.as_table}}
+                    {{ini | crispy}}
                 </div>
                 <br>
                 <button type="submit" id="is">Iniciar Sesión</button>

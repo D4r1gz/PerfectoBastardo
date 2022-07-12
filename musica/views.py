@@ -3,13 +3,13 @@ from lib2to3.pgen2 import token
 from time import strftime
 from django.forms import PasswordInput
 from django.shortcuts import render,redirect
-from musica.models import Evento,Useer
-from .forms import EventoForm,UseerForm
+from musica.models import Evento, Pedido,Useer
+from .forms import EventoForm, LoginForm,UseerForm
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 def home(request):
@@ -80,42 +80,57 @@ def eliminar_evento(request, id):
     return redirect(to='home')
 
 def usuario(request):
-    datos ={
-        'forma':UseerForm()
+    datos = {
+        'forma': UseerForm()
     }
 
     if(request.method == 'POST'):
         formulario = UseerForm(request.POST)
         if formulario.is_valid():
-            formulario.save()            
+            usuario = formulario.cleaned_data['username']
+            email = formulario.cleaned_data['email']
+            password_one = formulario.cleaned_data['password_one']
+            password_two = formulario.cleaned_data['password_two']
+            u = User.objects.create_user(
+                username=usuario, email=email, password=password_one)
+            u.save()
             datos['mensaje'] = 'registro exitoso'
         else:
             print(formulario.errors)
     return render(request, 'musica/formulario_registro.html', datos)
     
-def inicio_sesion (request):
-    datos ={
-        'ini': UseerForm()
+def inicio_sesion(request):
+    datos = {
+        'ini': LoginForm()
     }
     if (request.method == 'POST'):
-        token = Token()
         usu1 = request.POST.get('username')
-        pas= request.POST.get('password')
-        user = authenticate(request, username=usu1, password=pas)
-        if user is not None:
-            login(request, user)
-            datos['mensaje']='inicio exitoso'
+        u = User.objects.get(username=usu1)
+        pas = request.POST.get('password')
+        token = Token.objects.get(user=u )
+        useer = authenticate(request, username=usu1, password=pas, token=token)
+        if useer is not None:
+            login(request, useer)
+            
+            return redirect(to='home')
         else:
             print(usu1, pas)
-    return render(request,'musica/inicio_sesion.html', datos)
+            datos['mensaje'] = 'Error al iniciar'
+            return render(request, 'musica/inicio_sesion.html', datos)
+    return render(request, 'musica/inicio_sesion.html', datos)
 
-def logout (request):
-    usu1 = request.POST.get('username')
-    pas= request.POST.get('password')
-    user = authenticate(request, username=usu1, password=pas)
-    if user is not None:
-        logout(request, user)
-        
-        return render(request,'musica/index.html')
+
+def logout_view(request):
+    logout(request)
+
+    return render(request, 'musica/index.html')
+
+
+def productos_view(request):
+    lista_prod = Pedido.objects.all()
+    datos={
+        'productos':lista_prod
+    }
+    return render(request, 'musica/merchandising.html', datos)
 
 
