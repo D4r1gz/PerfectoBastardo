@@ -15,13 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-<<<<<<< HEAD
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LogoutView
-=======
 from django.conf import settings
 from django.conf.urls.static import static
->>>>>>> damaris2
 
 
 urlpatterns = [
