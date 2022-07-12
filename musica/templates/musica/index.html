@@ -38,18 +38,15 @@
         <nav class="navegacion">
           <ul>
             <li><a href="{%url 'home' %}">Inicio</a></li>
-            <li><a href="{%url 'biografia' %}">Biografia</a></li>
             <li><a href="{%url 'merchandising' %}">Merchandising</a></li>
-            <li><a href="{%url 'conciertos' %}">Conciertos</a></li> 
+            {% if user.is_authenticated %}
+                <li><a href="{%url 'conciertos' %}">Conciertos</a></li> 
+            {% endif %}
             <li><a href="{%url 'galeria' %}">Galeria</a></li>
             <li><a href="{%url 'discografia' %}">Discografia</a></li>     
             <li class="submenu">  
                 {% if user.is_authenticated %}
-<<<<<<< HEAD
                     <p>Bienvenido {{ user.username }}</p>
-=======
-                    <p><i class="icon-user icon-white"></i>{{ user.username }}</p>
->>>>>>> damaris2
                     <a href="{%url 'logout' %}">Cerrar Sesion</a>
                 {% else %}
                     <a href="#Login">Login</a>
@@ -59,12 +56,9 @@
                         </ul>
                     
                 {% endif %}
-<<<<<<< HEAD
 
            
 
-=======
->>>>>>> damaris2
             </li>
             
           </ul>
@@ -81,7 +75,7 @@
                 <h2>Culpable</h2>
 
                 <div class="contenedor-video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/u3MhSAYgDH8" 
+                <iframe width="560" height="315" class="video" src="https://www.youtube.com/embed/u3MhSAYgDH8" 
                 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
                 picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -132,7 +126,7 @@
                 <div class="fechas">
                     <h2>Fechas</h2>
 
-                    <table border="1">Eventos
+                    <table class ="tablas" border="1">Eventos
                         <tr>
                             <th>Evento</th>
                             <th>Descripcion</th>
