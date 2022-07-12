@@ -1,7 +1,8 @@
 {% load static %}
+{% load socialaccount %}
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -37,54 +38,35 @@
         <nav class="navegacion">
           <ul>
             <li><a href="{%url 'home' %}">Inicio</a></li>
-            <li><a href="{%url 'biografia' %}">Biografia</a></li>
             <li><a href="{%url 'merchandising' %}">Merchandising</a></li>
-            <li><a href="{%url 'conciertos' %}">Conciertos</a></li> 
+            {% if user.is_authenticated %}
+                <li><a href="{%url 'conciertos' %}">Conciertos</a></li> 
+            {% endif %}
             <li><a href="{%url 'galeria' %}">Galeria</a></li>
             <li><a href="{%url 'discografia' %}">Discografia</a></li>     
-            <li class="submenu"> 
-                   
-                <a href="#Login">Login</a>
-                <ul class="hijos">
-                    <li><a href="{%url 'formulario_registro' %}">Registrarse</a></li>
-                    <li><a href="{%url 'inicio_sesion' %}">Inicio de Sesión</a></li>
-                </ul>
+            <li class="submenu">  
+                {% if user.is_authenticated %}
+                    <p>Bienvenido {{ user.username }}</p>
+                    <a href="{%url 'logout' %}">Cerrar Sesion</a>
+                {% else %}
+                    <a href="#Login">Login</a>
+                        <ul class="hijos">
+                            <li><a href="{%url 'formulario_registro' %}">Registrarse</a></li>
+                            <li><a href="{%url 'inicio_sesion' %}">Inicio de Sesión</a></li>
+                        </ul>
+                    
+                {% endif %}
+
+           
+
             </li>
-         
+            
           </ul>
         </nav>
     </div>
-
-    {% for p in productos %}
-            
-    <div class="card">
-
-        <img src="/static/{{ p.imagen }}" alt="">
-        <div class="con-text">
-            <h2>
-                {{p.nombrePedido}}
-            </h2>
-            <p>
-                precio: ${{p.precio}}
-                <br>
-                unidades: {{p.stock}}
-                <button >
-                    <a href="{%url 'carrito' p.nombrePedido %}">comprar</a>
-                </button>
-            </p>
-            {% if user.is_authenticated %}
-            <button><a href="{%url 'modificar_prod' p.nombrePedido %}"></a>modificar</button>
-            <button><a class= 'eliminar'href="{%url 'eleminar_producto' p.nombrePedido%}"></a>eliminar</button>
-            {% endif %}
-        </div>
-    </div>
-
-    {% endfor %}
-
-
+    
     <footer>
         
-
         <section class="social-media">
 
             <p>© 2022 Perfecto Bastardo. Todos los derechos reservados.</p>
@@ -117,14 +99,10 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-tiktok" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                     <path d="M9 12a4 4 0 1 0 4 4v-12a5 5 0 0 0 5 5" />
-                  </svg></a> 
-                
-                  
+                  </svg></a>                  
                   
         </section>
     </footer>
-
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
